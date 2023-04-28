@@ -18,5 +18,4 @@ class UserController {
         return userService.validateUser(user);
     }
 
-
 }
