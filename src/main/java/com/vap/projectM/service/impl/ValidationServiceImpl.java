@@ -22,21 +22,24 @@ public class ValidationServiceImpl implements ValidationService {
         boolean firstNameValidator = Pattern.matches("[a-zA-Z]+\\.?", user.getFirstName());
         boolean lastNameValidator = Pattern.matches("[a-zA-Z]+\\.?", user.getLastName());
         boolean phoneValidator = Pattern.matches("[0-9]+\\.?", user.getPhone());
-        if (!(firstNameValidator)) {
-            log.info("Error in FirstName");
-            throw new ValidationException("Error in FirstName");
 
-        }
-        if (!(lastNameValidator)) {
-            log.info("Error in LastName");
-            throw new ValidationException("Error in LastName");
-
-        }
-        if (!(phoneValidator)) {
-            log.info("Error in Phone Number");
-            throw new ValidationException("Error in Phone Number");
+        String errorField = " ";
+        if (!(firstNameValidator && lastNameValidator && phoneValidator)) {
+            if (!firstNameValidator) {
+                errorField = "FirstName, ";
+            }
+            if (!lastNameValidator) {
+                errorField = errorField + "LastName, ";
+            }
+            if (!phoneValidator) {
+                errorField = errorField + "Phone Number";
+            }
+            throw new ValidationException("Error Occurred In " + errorField);
         }
         userRepository.save(user);
-        return firstNameValidator && lastNameValidator && phoneValidator;
+        log.info("Saving User " + user.getFirstName() + " To Database");
+        return true;
     }
+
+
 }
