@@ -3,7 +3,7 @@ package com.vap.projectM.service.impl;
 import com.vap.projectM.entity.User;
 import com.vap.projectM.exception.ValidationException;
 import com.vap.projectM.repository.UserRepository;
-import com.vap.projectM.service.ValidationService;
+import com.vap.projectM.service.IValidationService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 @Service
 @Slf4j
 @AllArgsConstructor
-public class ValidationServiceImpl implements ValidationService {
+public class IValidationServiceImpl implements IValidationService {
 
     private final UserRepository userRepository;
 
