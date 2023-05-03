@@ -12,3 +12,9 @@ abhishek-->Package-->"controller"--->post--->"UserController"-->method Name--->"
 Pramod-->Loggers-->All existing classes, throw custom exceptions
 Vaishnav-->Saving Logic 
 Abhishek-->Controller Advice
+
+# 3 May
+Pramod-->Add new entities (entity-->User.Class)-->("dob","panId") , add logic accordingly to service layer
+Vaishnav-->Add Logic For Auto-Merge in service layer,DTO
+Abhishek-->Add Logic For Possible Merge , Regex for DOB & PanID (dependency-->pramod)
+Error TableLogic--> Vaishnav & Abhishek
