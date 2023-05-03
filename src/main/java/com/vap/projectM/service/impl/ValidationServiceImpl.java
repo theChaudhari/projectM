@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 @Service
 @Slf4j
 @AllArgsConstructor
-public class IValidationServiceImpl implements IValidationService {
+public class ValidationServiceImpl implements IValidationService {
 
     private final UserRepository userRepository;
 
