@@ -34,7 +34,13 @@ public class IValidationServiceImpl implements IValidationService {
                 errorField = errorField + "LastName, ";
             }
             if (!phoneValidator) {
-                errorField = errorField + "Phone Number";
+                errorField = errorField + "Phone Number, ";
+            }
+            if (!dobValidator){
+                errorField = errorField+ "Dob ";
+            }
+            if (!panIdValidator){
+                errorField = errorField+"& Pan number";
             }
             throw new ValidationException("Error Occurred In " + errorField);
         }
