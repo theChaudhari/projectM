@@ -22,6 +22,8 @@ public class ValidationServiceImpl implements ValidationService {
         boolean firstNameValidator = Pattern.matches("[a-zA-Z]+\\.?", user.getFirstName());
         boolean lastNameValidator = Pattern.matches("[a-zA-Z]+\\.?", user.getLastName());
         boolean phoneValidator = Pattern.matches("[0-9]+\\.?", user.getPhone());
+        boolean dobValidator = Pattern.matches("^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$?", user.getDob());
+        boolean panIdValidator = Pattern.matches("[a-zA-Z0-9]+\\.?", user.getPanId());
 
         String errorField = " ";
         if (!(firstNameValidator && lastNameValidator && phoneValidator)) {
