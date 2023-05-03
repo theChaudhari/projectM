@@ -28,4 +28,13 @@ class ExceptionControllerAdvisor {
         error.callerURL(request.getRequestURI());
         return error;
     }
+
+    @ExceptionHandler(TechnicalException.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public @ResponseBody ExceptionResponse handleException(final TechnicalException technicalException, final HttpServletRequest request){
+        ExceptionResponse error = new ExceptionResponse();
+        error.setErrorMessage(technicalException.getMessage());
+        error.callerURL(request.getRequestURI());
+        return error;
+    }
 }
