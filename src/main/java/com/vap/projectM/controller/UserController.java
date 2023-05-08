@@ -5,10 +5,7 @@ import com.vap.projectM.exception.TechnicalException;
 import com.vap.projectM.exception.ValidationException;
 import com.vap.projectM.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -23,8 +20,14 @@ class UserController {
     }
 
     @GetMapping("/possibleMerge")
-    private String possibleMerge(@RequestBody User user)throws TechnicalException{
+    public String possibleMerge(@RequestBody User user)throws TechnicalException{
         return userService.possibleMerge(user);
     }
+
+    @PutMapping("/autoMerge")
+    public String autoMerge(@RequestBody User user)throws TechnicalException{
+        return userService.autoMerge(user);
+    }
+
 
 }

@@ -9,4 +9,6 @@ public interface UserService {
     public Boolean validateUser(User user) throws  ValidationException;
     public String possibleMerge(User user) throws TechnicalException;
 
+    public String autoMerge(User user) throws TechnicalException;
+
 }

@@ -1,11 +1,14 @@
 package com.vap.projectM.service.impl;
 
 import com.vap.projectM.entity.User;
+import com.vap.projectM.exception.TechnicalException;
 import com.vap.projectM.exception.ValidationException;
 import com.vap.projectM.repository.UserRepository;
 import com.vap.projectM.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -35,6 +38,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.existsByPhone(phone);
     }
 
+    public boolean isPanExists(String panId){return userRepository.existsByPanId(panId);}
+
     public boolean isCityExists(String city) {
         return userRepository.existsByCity(city);
     }
@@ -46,6 +51,26 @@ public class UserServiceImpl implements UserService {
             return "This User '" + user.getFirstName() + "' could be possible merge";
         }
         return "Not In DataBase";
+    }
+
+    @Override
+    public String autoMerge(User user) throws TechnicalException {
+        if(isPanExists(user.getPanId())){
+            Optional<User> exUser = userRepository.findByPanId();
+            if (exUser.isPresent()){
+                User user1 = exUser.get();
+                user1.setFirstName(user.getFirstName());
+                user1.setLastName(user.getLastName());
+                user1.setCity(user.getCity());
+                user1.setPhone(user.getPhone());
+                user1.setDob(user.getDob());
+                userRepository.save(user1);
+
+            }
+            return "this ";
+        }
+        userRepository.save(user);
+        return "New User "+ user.getFirstName()+" Is Added";
     }
 
 
