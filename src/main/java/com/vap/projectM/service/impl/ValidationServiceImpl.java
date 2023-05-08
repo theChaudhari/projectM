@@ -24,9 +24,10 @@ public class ValidationServiceImpl implements IValidationService {
         boolean phoneValidator = Pattern.matches("[0-9]+\\.?", user.getPhone());
         boolean dobValidator = Pattern.matches("^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$?", user.getDob());
         boolean panIdValidator = Pattern.matches("[a-zA-Z0-9]+\\.?", user.getPanId());
+        boolean cityValidator = Pattern.matches("[a-zA-Z]+\\.?", user.getCity());
 
         String errorField = " ";
-        if (!(firstNameValidator && lastNameValidator && phoneValidator)) {
+        if (!(firstNameValidator && lastNameValidator && phoneValidator && cityValidator)) {
             if (!firstNameValidator) {
                 errorField = "FirstName, ";
             }
@@ -40,8 +41,12 @@ public class ValidationServiceImpl implements IValidationService {
                 errorField = errorField+ "Dob ";
             }
             if (!panIdValidator){
-                errorField = errorField+"& Pan number";
+                errorField = errorField+", Pan number";
             }
+            if (!cityValidator){
+                errorField = errorField+"& city";
+            }
+
             throw new ValidationException("Error Occurred In " + errorField);
         }
         userRepository.save(user);

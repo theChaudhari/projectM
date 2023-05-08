@@ -21,4 +21,5 @@ public class User {
     private String phone;
     private String dob;
     private String panId;
+    private String city;
 }
