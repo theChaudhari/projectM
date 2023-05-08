@@ -24,7 +24,7 @@ class UserController {
         return userService.possibleMerge(user);
     }
 
-    @PutMapping("/autoMerge")
+    @PutMapping("/autoMergeValidateUser")
     public String autoMerge(@RequestBody User user)throws TechnicalException{
         return userService.autoMerge(user);
     }
