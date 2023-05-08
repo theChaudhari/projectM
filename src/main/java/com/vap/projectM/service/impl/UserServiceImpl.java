@@ -14,8 +14,6 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
 
-//    private final UserServiceImpl userService;
-
     @Override
     public Boolean validateUser(User user) throws ValidationException {
         return validateUser(user);
