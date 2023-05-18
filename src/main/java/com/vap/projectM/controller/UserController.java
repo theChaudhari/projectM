@@ -28,6 +28,4 @@ class UserController {
     public String autoMerge(@RequestBody User user)throws TechnicalException{
         return userService.autoMerge(user);
     }
-
-
 }

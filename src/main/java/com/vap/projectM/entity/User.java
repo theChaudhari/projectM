@@ -1,17 +1,16 @@
 package com.vap.projectM.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Value;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name ="Customer_Stg")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,4 +21,7 @@ public class User {
     private String dob;
     private String panId;
     private String city;
+
+    @ManyToOne()
+    private PossibleMergeTable possibleMergeTable;
 }
